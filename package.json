@@ -25,10 +25,12 @@
     "test": "umi-scripts jest-turbo"
   },
   "dependencies": {
-    "@umijs/utils": "workspace:*"
+    "@umijs/utils": "workspace:*",
+    "umi-scripts": "E:/code/react/umi/scripts"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "authors": [
     "zj <1580043700@qq.com> (https://github.com/xiaodel)"
