@@ -6,7 +6,7 @@
   "bugs": "https://github.com/umijs/umi/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xiaodel/create-umi-full"
+    "url": "https://gitee.com/xiaodel/create-umi-full"
   },
   "license": "MIT",
   "main": "dist/index.js",
