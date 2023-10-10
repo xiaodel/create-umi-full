@@ -1,9 +1,9 @@
 {
   "name": "create-umi-full",
-  "version": "0.0.3",
+  "version": "0.0.9",
   "description": "create-umi-full",
-  "homepage": "https://github.com/umijs/umi/tree/master/packages/create-umi#readme",
-  "bugs": "https://github.com/umijs/umi/issues",
+  "homepage": "https://gitee.com/xiaodel/create-umi-full/blob/main/README.md",
+  "bugs": "https://gitee.com/xiaodel/create-umi-full/issues",
   "repository": {
     "type": "git",
     "url": "https://gitee.com/xiaodel/create-umi-full"
@@ -25,8 +25,7 @@
     "test": "umi-scripts jest-turbo"
   },
   "dependencies": {
-    "@umijs/utils": "workspace:*",
-    "umi-scripts": "../../scripts"
+    "@umijs/utils": "^4.0.83"
   },
   "publishConfig": {
     "access": "public",

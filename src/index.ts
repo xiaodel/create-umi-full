@@ -135,7 +135,7 @@ export default async ({
         { label: ENpmClient.yarn, value: ENpmClient.yarn },
         { label: ENpmClient.pnpm, value: ENpmClient.pnpm, hint: 'recommended' },
       ],
-      initialValue: ENpmClient.pnpm,
+      initialValue: ENpmClient.npm,
     })) as ENpmClient;
   };
   const selectRegistry = async () => {
@@ -153,7 +153,7 @@ export default async ({
           hint: '淘宝仓库',
         },
       ],
-      initialValue: ERegistry.npm,
+      initialValue: ERegistry.taobao,
     })) as ERegistry;
   };
   const internalTemplatePrompts = async () => {
