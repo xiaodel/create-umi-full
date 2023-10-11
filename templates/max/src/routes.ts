@@ -1,7 +1,7 @@
 /**
  * description: 项目路由
- * author: 1580043700@qq.com
- * create_date: 2023/10/8-16:49
+ * author:
+ * create_date:
  */
 
 interface IRoutes {

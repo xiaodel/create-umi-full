@@ -11,8 +11,8 @@ export type TableProps<DataSource, U, ValueType> = {
 
 /**
  * description:
- * author: 1580043700@qq.com
- * create_date: 2023/10/11-11:19
+ * author:
+ * create_date:
  */
 
 export const ProTable = (props: TableProps<any,any,any>) => {
