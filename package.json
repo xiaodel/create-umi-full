@@ -2,11 +2,11 @@
   "name": "create-umi-full",
   "version": "1.0.3",
   "description": "create-umi-full",
-  "homepage": "https://gitee.com/xiaodel/create-umi-full/blob/main/README.md",
-  "bugs": "https://gitee.com/xiaodel/create-umi-full/issues",
+  "homepage": "https://github.com/xiaodel/create-umi-full/blob/main/README.md",
+  "bugs": "https://github.com/xiaodel/create-umi-full/issues",
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/xiaodel/create-umi-full"
+    "url": "https://github.com/xiaodel/create-umi-full"
   },
   "license": "MIT",
   "main": "dist/index.js",
