@@ -15,7 +15,8 @@
     "@ant-design/plots": "^1.2.5",
     "@ant-design/pro-components": "^2.4.4",
     "@umijs/max": "^4.0.83",
-    "antd": "^5.4.0"
+    "antd": "^5.4.0",
+    "react-draggable": "^4.4.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
