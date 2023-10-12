@@ -23,15 +23,19 @@
 - 添加getInitialState示例代码
 - 添加登录页面示例代码
 - services/*示例代码调整
-
 - ProTable封装
+- Modal支持拖拽
 
-  使用components/ProComponents 导出 ProTable传入services下的api 名称自动实现接口请求，不再需要传入request。如：
+  
 
+
+##### DEMO 示例
 
 ```javascript jsx
-pages/Table/index.tsx
+// ProTable封装 
+// 使用components/ProComponents 导出 ProTable传入services下的api 名称自动实现接口请求，不再需要传入request。如：
 
+pages/Table/index.tsx
 
 import {ActionType,FooterToolbar,PageContainer,ProDescriptions,ProTable} from '@/components/ProComponents';
 
@@ -61,6 +65,38 @@ rowSelection={{
 
 ```
 
+```javascript jsx
+// Modal支持拖拽
+
+import {PageContainer} from '@ant-design/pro-components';
+import {Modal, Button,Space} from '@/components/Antd'
+
+const HomePage: React.FC = () => {
+
+  const onFinish = () => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        // true关闭弹窗，false不关闭
+        resolve(true);
+      }, 2000)
+    })
+  }
+
+  return (
+          <PageContainer title='Home'>
+            <Space>
+              // 在 Modal 的基础上增加了 trigger ，无需维护 open 状态
+              <Modal title='可以拖拽的模态框' trigger={<Button>可以拖拽的模态框</Button>} onFinish={onFinish}>
+                <div>在 Modal 的基础上增加了 trigger ，无需维护 open 状态</div>
+              </Modal>
+            </Space>
+          </PageContainer>
+  );
+};
+
+export default HomePage;
+
+```
 
 ### 联系方式
 QQ：1580043700

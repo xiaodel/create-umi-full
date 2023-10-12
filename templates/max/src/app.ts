@@ -13,7 +13,7 @@ export async function getInitialState(): Promise<any> {
     let {data} = await getMenus({});
     return {
       menus: data,
-      name: 'zhang san',
+      name: 'Tony',
       avatar: 'https://gw.alipayobjects.com/zos/bmw-prod/598d14af-4f1c-497d-b579-5ac42cd4dd1f/k7bjua9c_w132_h130.png'
     };
   } catch (e) {
@@ -21,6 +21,7 @@ export async function getInitialState(): Promise<any> {
     history.push('/login')
   }
 }
+
 
 export const layout = ({initialState}: any) => {
   console.log('initialState', initialState)
@@ -35,7 +36,7 @@ export const layout = ({initialState}: any) => {
     },
     layout: 'mix',
     logout:()=>{
-
+      history.replace('/login');
     }
     // 如果以上满足不了需求，可以通过以下接口实现右上角 UI 完全的自定义。
     // rightRender: (initialState, setInitialState) => {

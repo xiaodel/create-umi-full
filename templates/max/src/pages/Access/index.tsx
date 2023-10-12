@@ -16,12 +16,14 @@ const AccessPage: React.FC = () => {
                 title: '权限示例',
             }}
         >
-            <Access accessible={access.canSeeAdmin}>
-                <Button>只有 Admin 可以看到这个按钮</Button>
-            </Access>
-            <Button onClick={openPage}>跳转用户详情 </Button>
-            <Link to={'/access1/list'}>跳转用户列表</Link>
-            <Link to={'/access1/update'}>跳转用户编辑</Link>
+            <Space>
+                <Access accessible={access.canSeeAdmin}>
+                    <Button>只有 Admin 可以看到这个按钮</Button>
+                </Access>
+                <Button onClick={openPage}>跳转用户详情 </Button>
+                <Link to={'/access1/list'}>跳转用户列表</Link>
+                <Link to={'/access1/update'}>跳转用户编辑</Link>
+            </Space>
         </PageContainer>
     );
 };

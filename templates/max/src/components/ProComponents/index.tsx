@@ -10,7 +10,7 @@ export type TableProps<DataSource, U, ValueType> = {
 } & ProTableProps<DataSource, U, ValueType>
 
 /**
- * description:
+ * description: ProTable封装网络请求
  * author:
  * create_date:
  */
