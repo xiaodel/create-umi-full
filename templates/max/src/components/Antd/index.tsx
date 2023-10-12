@@ -1,7 +1,7 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useRef, useState} from 'react';
 
 export * from "antd";
-import Draggable from 'react-draggable';
+import Draggable, {DraggableBounds, DraggableEvent, DraggableData} from 'react-draggable';
 import {Modal as AntdModal} from "antd";
 import type {ModalProps} from "antd";
 
@@ -20,8 +20,11 @@ const Modal = (props: IProps) => {
 
     const {draggable: propsDraggable = true, trigger} = props;
     let [open, setOpen] = useState<boolean>(false);
+    let [bounds, setBounds] = useState<DraggableBounds>({});
     let [loading, setLoading] = useState<boolean>(false);
     let [draggable, setDraggable] = useState<boolean>(false);
+
+    let draggableRef: any = useRef(null);
 
     const bindClose = () => {
         setOpen(false);
@@ -40,7 +43,7 @@ const Modal = (props: IProps) => {
         }
     }
 
-    const triggerDom = useMemo(()=>{
+    const triggerDom = useMemo(() => {
         if (!trigger) {
             return null;
         }
@@ -52,8 +55,18 @@ const Modal = (props: IProps) => {
                 trigger.props?.onClick?.(e);
             },
         });
-    },[setOpen,trigger,open])
+    }, [setOpen, trigger, open])
 
+    const onStart = (e: DraggableEvent, data: DraggableData) => {
+        let client = draggableRef.current?.getBoundingClientRect();
+        const {innerWidth, innerHeight} = window;
+        setBounds({
+            left: -client?.left + data.x,
+            right: innerWidth - (client?.right - data.x),
+            top: -client?.top + data.y,
+            bottom: innerHeight - (client?.bottom - data.y)
+        })
+    }
 
     return (
         <>
@@ -75,9 +88,11 @@ const Modal = (props: IProps) => {
                 modalRender={(modalRender) => (
                     <Draggable
                         disabled={!draggable}
+                        bounds={bounds}
                         allowAnyClick={true}
+                        onStart={onStart}
                     >
-                        <div>{modalRender}</div>
+                        <div ref={draggableRef}>{modalRender}</div>
                     </Draggable>
                 )}>
                 {props.children}
