@@ -1,4 +1,4 @@
-import React, {useMemo, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 
 export * from "antd";
 import Draggable, {DraggableBounds, DraggableEvent, DraggableData} from 'react-draggable';
@@ -23,6 +23,7 @@ const Modal = (props: IProps) => {
     let [bounds, setBounds] = useState<DraggableBounds>({});
     let [loading, setLoading] = useState<boolean>(false);
     let [draggable, setDraggable] = useState<boolean>(false);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
 
     let draggableRef: any = useRef(null);
 
@@ -60,13 +61,33 @@ const Modal = (props: IProps) => {
     const onStart = (e: DraggableEvent, data: DraggableData) => {
         let client = draggableRef.current?.getBoundingClientRect();
         const {innerWidth, innerHeight} = window;
+        let padding = 10;
         setBounds({
-            left: -client?.left + data.x,
-            right: innerWidth - (client?.right - data.x),
-            top: -client?.top + data.y,
-            bottom: innerHeight - (client?.bottom - data.y)
+            left: -client?.left + data.x + padding,
+            right: innerWidth - (client?.right - data.x) - padding,
+            top: -client?.top + data.y + padding,
+            bottom: innerHeight - (client?.bottom - data.y) - padding
         })
     }
+    const handleDrag = (e:any, ui:any) => {
+        const { x, y } = ui;
+        setPosition({ x, y });
+    };
+
+    const handleReset = () => {
+        setPosition({ x: 0, y: 0 });
+    };
+
+    // useEffect(()=>{
+    //     window.addEventListener('resize',handleReset);
+    //     return()=>{
+    //         return  window.removeEventListener('resize',handleReset);
+    //     }
+    // },[])
+
+    useEffect(()=>{
+        handleReset();
+    },[props.open,open]);
 
     return (
         <>
@@ -89,8 +110,10 @@ const Modal = (props: IProps) => {
                     <Draggable
                         disabled={!draggable}
                         bounds={bounds}
+                        position={position}
                         allowAnyClick={true}
                         onStart={onStart}
+                        onDrag={handleDrag}
                     >
                         <div ref={draggableRef}>{modalRender}</div>
                     </Draggable>
